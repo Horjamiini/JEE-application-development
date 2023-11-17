@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="T1-T01_servlet-getset-attrs">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <property name="context-root" value="T1-T01_servlet-getset-attrs"/>
+        <property name="java-output-path" value="/T1-T01_servlet-getset-attrs/build/classes"/>
+    </wb-module>
+</project-modules>

@@ -1,0 +1,10 @@
+Servlet scopeja on olemassa kolmenlaisia:
+	1. Request
+	2. Session
+	3. Context/Application
+	
+Request scope elää vain sen ajan kun request/pyyntö on voimassa, tällöin request scopella voidaan lähettää dataa, jonka voi unohtaa/tuhota requestin päättymisen jälkeen
+
+Session scope elää yhden clientin yhteydenoton ajan. Tällöin data säilyy pidempään kuin yhden requestin verran toisin kuin request scopessa. Tiedot kuitenkin poistuvat session päättymisen yhteydessä.
+
+Context/Application scope elää koko sovelluksen elinkaaren ajan. Tällin data pysyy jokaisen session ja requestin mukana aina.

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Palkkalomake</title>
+</head>
+<body>
+<!-- Lomake josta tiedot lähetetään servletille, jossa tulokset lasketaan ja näytetään -->
+<form action="../PalkanlaskuServlet" method="post">
+	<label for="tunnit">Tunnit:</label>
+	<input type="number" id="tunnit" name="tunnit"><br>
+<br>
+	<label for="tuntipalkka">Tuntipalkka:</label>
+	<input type="number" id="tuntipalkka" name="tuntipalkka"><br>
+<br>
+	<label for="veroprosentti">Veroprosentti</label>
+	<input type="number" id="veroprosentti" name="veroprosentti"><br>
+<br>
+	<input type="submit" value="Submit">
+</form>
+</body>
+</html>
