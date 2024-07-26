@@ -43,6 +43,12 @@ public class ControllerServlet extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/DispatcherEditServlet");
 			rd.include(request, response);
 		}
+		
+		else if (request.getParameter("Tallenna") != null ) {
+			RequestDispatcher rd = request.getRequestDispatcher("/SaveServlet");
+			rd.include(request, response);
+			
+		}
 		// Kontrolli palaa tähän kun DispatcherServlet on tehnyt työnsä.
 
 		/*
@@ -53,6 +59,9 @@ public class ControllerServlet extends HttpServlet {
 		// siirrytään vastaus.jsp-sivulle
 		if (request.getParameter("Submit") != null) {
 			request.getRequestDispatcher("vastaus.jsp").forward(request, response);
+		}
+		else if (request.getParameter("Tallenna") != null ) {
+			request.getRequestDispatcher("lomake.html").forward(request, response);
 		}
 		else {
 			request.getRequestDispatcher("muokkaa.jsp").forward(request, response);

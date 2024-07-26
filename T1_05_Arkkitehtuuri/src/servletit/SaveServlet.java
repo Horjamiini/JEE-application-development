@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class SaveServlet
@@ -24,6 +25,12 @@ public class SaveServlet extends HttpServlet {
        
     Connection conn = null;
     
+	String id = "";
+	String nimi = "";
+	String osoite = "";
+	String puhelin = "";
+	String email = "";
+	String salasana = "";
     
     public void init(ServletConfig config) throws ServletException {
     	super.init(config);
@@ -43,13 +50,28 @@ public class SaveServlet extends HttpServlet {
     	}
     }
     
+    // Sessission haltuunotto/muokkaus vai onnistuuko Edit serveltistä?
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) 
     		throws ServletException, IOException {
     	
-    	PrintWriter out = response.getWriter();
+    	id = request.getParameter("id");
+    	nimi = request.getParameter("nimi");
+    	osoite = request.getParameter("osoite");
+    	puhelin = request.getParameter("puhelin");
+    	email = request.getParameter("email");
+    	salasana = request.getParameter("salasana");
     	
-    	HttpSession session = request.getSession(false);
-    	
+    	try {
+    		Statement stmt = conn.createStatement();
+    		
+    		int rs = stmt.executeUpdate
+    		("UPDATE asiakkaat SET nimi = '" + nimi + "', osoite = '" + osoite + "', puhelin = '" + puhelin + "', email = '" + email + "', salasana = '" + salasana + "' WHERE id = '" + id + "'");
+    		
+    		System.out.println("Rows affected: " + rs);
+    		
+    	} catch (Exception e) {
+    		System.out.println(e);
+    	}
     	
     }
     
