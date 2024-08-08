@@ -9,6 +9,8 @@ import java.sql.Statement;
 // import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -17,6 +19,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.sql.DataSource;
 
 import luokat.AsiakasBean;
 import luokat.SQL;
@@ -37,16 +40,18 @@ public class AsiakkaatHakuServlet extends HttpServlet {
 	String option = "";
 	String entry = "";
 
-	// Avataan init-metodissa tietokantayhteys
+	// Avataan init-metodissa tietokantayhteys, tässä käytetty connection poolia
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
 		try {
-			conn = SQL.openConnection();
-		} catch (Exception e) {
-			System.out.println("Poikkeus " + e);
+	          Context ctx = new InitialContext();
+	    	  DataSource ds = (DataSource) ctx.lookup("jdbc/myDataSource");
+	    	  conn = ds.getConnection();         
+	                     
+	            }   
+	             catch (Exception ex) {} 
 		}
-	}
 	
 	// Suljetaan tietokanta yhteys destroy-metodissa
 	@Override
