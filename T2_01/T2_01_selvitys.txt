@@ -1,0 +1,12 @@
+Mitä sovelluksessa olevat tiedostot tekevät eli mitkä ovat niiden roolit?
+	web.xml - Web sovelluksen konfiguraatiotiedosto
+	faces-config.xml - JSF konfiguraatio tiedosto, josta löytyy navigointisäännöt onnistuneet/epäonnistuneen kirjautumisen ohjaamiselle
+	index.xhtml - kirjautumissivu, jossa JSFkomponentteja sisältävä lomake
+	success.xhtml - Sivu, jolle käyttäjä ohjataan kirjautumisen onnistuessa
+	failure.xhtml - Sivu, jolle käyttäjä ohjataan kirjautumisen epäoniistuessa esim. virheelliset kirjautumistiedot
+	LoginBean.java - Sisältää Beanin tiedot, jossa mm. kirajutumisen onnistumisen testaava metodi
+
+
+Miten autentikaatio sovelluksessa tapahtuu?
+	Autentikaatio tapahtuu lomakkeen kautta. Käyttäjä syöttää lomakkeelle tiedot ja sovellus/palvelin tarkistaa Beanin kautta tunnusten oikeellisuuden.
+	Tämän jälkeen käyttäjä ohjataan navigointisäännön mukaisesti joko success tai failure sivulle

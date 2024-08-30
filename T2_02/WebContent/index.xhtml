@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:h="http://xmlns.jcp.org/jsf/html"
+ xmlns:f="http://xmlns.jcp.org/jsf/core">
+ 
+<h:head>
+	<title>Dice</title>
+</h:head>
+
+<h:body>
+
+	<h3>Roll a dice</h3>
+	
+	<h:form>
+		<h:commandButton actionListener="#{diceRoll.heita(ae)}"
+		value="Heitä noppaa">
+		
+		<f:ajax execute="@form" render="output1 output2 output3 output4"/>
+		</h:commandButton>
+		
+		<h:commandButton actionListener="#{diceRoll.nollaa(ae)}"
+		value="Nollaa">
+		<f:ajax execute="@form" render="output1 output2 output3 output4" />
+		</h:commandButton>
+	</h:form>
+	
+	<br />
+	<h:outputText id="output1" value="Tulos: #{diceRoll.tulos}" />
+	<br />
+	<h:outputText id="output2" value="Summa: #{diceRoll.summa}"/>
+	<br />
+	<h:outputText id="output3" value="Heittojen lukumäärä: #{diceRoll.heittoLkm}"/>
+	<br />
+	<h:outputText id="output4" value="Heittojen keskiarvo #{diceRoll.keskiarvo}"/>
+
+</h:body>
+</html>
