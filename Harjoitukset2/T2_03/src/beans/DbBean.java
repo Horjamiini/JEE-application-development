@@ -25,13 +25,14 @@ package beans;
 import java.io.FileReader;
 import java.io.LineNumberReader;
 import java.io.Serializable;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import java.sql.Statement;
 import java.sql.PreparedStatement;
+
 import javax.enterprise.context.Dependent;
 import javax.inject.Named;
 
@@ -149,7 +150,7 @@ public class DbBean implements Serializable {
 	// Käyttäjien tallennus
 	public void saveUser(String username, String password) {
 		
-		// save metodiin esto tallentamiselle jos käyttäjä jo olemassa samaisella nimellä
+		
 
 		try {
 			

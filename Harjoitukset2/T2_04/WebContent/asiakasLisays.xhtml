@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Asiakkaan lisäys</title>
+        <h:outputStylesheet library = "css" name = "styles.css"  />
+    </h:head>
+
+	<h:body>
+		<h2>Lisää asiakas</h2>
+		<h:form>
+			<h:panelGrid columns="2">
+
+				<h:outputText value="Nimi"/>
+					<h:inputText size="20" maxlength="20" id="nimi" value="#{asiakasBean.nimi}">
+					</h:inputText>
+					
+				<h:outputText value="Osoite"/>
+					<h:inputText size="20" maxlength="50" id="osoite" value="#{asiakasBean.osoite}">
+					</h:inputText>
+
+				<h:outputText value="Puhelin"/>
+					<h:inputText size="20" maxlength="20" id="puhelin" value="#{asiakasBean.puhelin}">
+					</h:inputText>
+
+				<h:outputText value="Email"/>
+					<h:inputText size="20" maxlength="500" id="email" value="#{asiakasBean.email}">
+					</h:inputText>
+					
+				<h:outputText value="Salasana"/>
+					<h:inputText size="20" maxlength="25" id="salasana" value="#{asiakasBean.salasana}">
+					</h:inputText>
+					
+				<h:commandButton value="Lähetä" actionListener="#{dbBean.LisaaAsiakas(asiakasBean.nimi, asiakasBean.osoite, asiakasBean.puhelin, asiakasBean.email, asiakasBean.salasana)}"/>
+		
+			</h:panelGrid>
+		
+		</h:form>
+
+		
+	</h:body>
+    
+</html>

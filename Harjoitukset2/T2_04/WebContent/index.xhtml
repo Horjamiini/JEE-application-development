@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>AsiakasLista</title>
+        <h:outputStylesheet library = "css" name = "styles.css"  />
+    </h:head>
+    
+    <h:body>
+    	<h2>Lista asiakkaista</h2>
+    	
+    	<h:dataTable value = "#{dbBean.asiakkaat}" var ="c"
+    	styleClass = "authorTable"
+    	headerClass = "authorTableHeader"
+    	rowClasses = "authorTableOddRow,authorTableEvenRow">
+    	
+    	<h:column><f:facet name = "header">Asiakas ID</f:facet>
+    		#{c.id}
+    	</h:column>	
+    	 <h:column><f:facet name = "header">Nimi</f:facet>
+    		#{c.nimi}
+    	</h:column>
+    	<h:column><f:facet name = "header">Osoite</f:facet>
+    		#{c.osoite}
+    	</h:column>
+    	<h:column><f:facet name = "header">Puhelin</f:facet>
+    		#{c.puhelin}
+    	</h:column>
+    	<h:column><f:facet name = "header">Email</f:facet>
+    		#{c.email}
+    	</h:column>
+    	
+    	</h:dataTable>
+    	
+    	<a href="asiakasLisays.xhtml">Lisää asiakas</a>
+    
+    </h:body>
+    
+</html>
