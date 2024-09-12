@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Asiakkaan lisäys</title>
+        
+    </h:head>
+
+	<h:body>
+		<h2>Lisää asiakas</h2>
+		
+		<h:form>
+			<h:outputText value="Nimi"/>
+				<p:inputText value="#{asiakasBean.nimi}"/>
+			<br/>
+			<h:outputText value="Osoite"/>
+				<p:inputText value="#{asiakasBean.osoite}"/>
+			<br/>
+			<h:outputText value="Puhelin"/>
+				<p:inputText value="#{asiakasBean.puhelin}"/>
+			<br/>
+			<h:outputText value="Email"/>
+				<p:inputText value="#{asiakasBean.email}"/>
+			<br/>
+			<h:outputText value="Salasana"/>
+				<p:inputText value="#{asiakasBean.salasana}"/>
+			<br/>
+			<p:commandButton value="Lisää" actionListener="#{dbBean.LisaaAsiakas(asiakasBean.nimi, asiakasBean.osoite, asiakasBean.puhelin, asiakasBean.email, asiakasBean.salasana)}"/>
+
+		</h:form>
+		
+	</h:body>
+    
+</html>

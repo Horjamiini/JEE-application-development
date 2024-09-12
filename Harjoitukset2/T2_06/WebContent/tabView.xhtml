@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Tab View</title>
+    </h:head>
+
+
+	<h:body>
+	
+	<p:tabView id="asiakasTabView" widgetVar="tabWidget" cache="false">
+	
+		<!-- Asiakas listaus tabi -->
+		<p:tab title="Asiakkat">
+		
+		<h:form id="asiakasForm">
+		
+		    <p:dataTable id="asiakasDataTable" var="a" value="#{dbBean.asiakkaat}" rows="5" paginator="true" paginatorPosition="bottom">
+            
+            <p:column headerText="Id">
+                <h:outputText value="#{a.id}" />
+            </p:column>
+			<p:column headerText="Nimi">
+                <h:outputText value="#{a.nimi}" />
+            </p:column>
+            <p:column headerText="Osoite">
+                <h:outputText value="#{a.osoite}" />
+            </p:column>
+			<p:column headerText="Puhelin">
+                <h:outputText value="#{a.puhelin}" />
+            </p:column>
+            <p:column headerText="Email">
+                <h:outputText value="#{a.email}" />
+            </p:column>
+
+
+        	</p:dataTable>
+        </h:form>
+		</p:tab>
+		<!-- Asiakkaan lisäys tabi -->
+		<p:tab title="Lisää asiakas">
+		
+			<h:form id="lisaaAsiakasForm">
+				<h:outputText value="Nimi"/>
+					<p:inputText value="#{asiakasBean.nimi}"/>
+				<br/>
+				<h:outputText value="Osoite"/>
+					<p:inputText value="#{asiakasBean.osoite}"/>
+				<br/>
+				<h:outputText value="Puhelin"/>
+					<p:inputText value="#{asiakasBean.puhelin}"/>
+				<br/>
+				<h:outputText  value="Email"/>
+					<p:inputText value="#{asiakasBean.email}"/>
+				<br/>
+				<h:outputText value="Salasana"/>
+					<p:inputText value="#{asiakasBean.salasana}"/>
+				<br/>
+				<p:commandButton value="Lisää" actionListener="#{dbBean.LisaaAsiakas(asiakasBean.nimi, asiakasBean.osoite, asiakasBean.puhelin, asiakasBean.email, asiakasBean.salasana)}"
+					update=":asiakasTabView:asiakasForm:asiakasDataTable, :asiakasTabView:lisaaAsiakasForm"
+					oncomplete="PF('tabWidget').select(0)"/>
+				
+				<!-- dataTable päivittyy lisätessä uusi asiakas lomakkeella, lisätyn asiakkaan tiedot jäävät kumminkin lisäys lomakkeelle kummittelemaan, jota en saanut korjattua -->
+
+			</h:form>
+		</p:tab>
+		
+	</p:tabView>
+			<!-- Javascript scripti tabin vaihtamiseen uuden asiakkaan lisämisen jälkeen -->
+	        <script type="text/javascript">
+            var tabViewWidget = PF('tabWidget');
+            </script>
+	</h:body>
+</html>

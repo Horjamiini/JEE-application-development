@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>AsiakasLista</title>
+        
+    </h:head>
+    
+    <h:body>
+    	<h2>Lista asiakkaista</h2>
+
+        <p:dataTable var="a" value="#{dbBean.asiakkaat}" rows="5" paginator="true" paginatorPosition="bottom">
+            
+            <p:column headerText="Id">
+                <h:outputText value="#{a.id}" />
+            </p:column>
+			<p:column headerText="Nimi">
+                <h:outputText value="#{a.nimi}" />
+            </p:column>
+            <p:column headerText="Osoite">
+                <h:outputText value="#{a.osoite}" />
+            </p:column>
+			<p:column headerText="Puhelin">
+                <h:outputText value="#{a.puhelin}" />
+            </p:column>
+            <p:column headerText="Email">
+                <h:outputText value="#{a.email}" />
+            </p:column>
+
+
+        </p:dataTable>
+
+    <a href="asiakasLisays.xhtml">Lisää asiakas</a>
+    </h:body>
+    
+</html>
