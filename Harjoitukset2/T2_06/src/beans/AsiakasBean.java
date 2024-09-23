@@ -74,9 +74,4 @@ public class AsiakasBean implements Serializable {
 		this.id = id;
 	}
 	
-	public void clear(){
-	    setNimi(null);
-
-	}//end clear`
-	
 }

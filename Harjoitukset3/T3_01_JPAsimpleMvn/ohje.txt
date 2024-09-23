@@ -1,0 +1,29 @@
+JPAsimpleMvn on Maven-projekti jossa demotaan yksinkertaista
+JPA:lla(Eclipselink) toteutettua ORM:ia eli Object Relational
+Mappingia. Pom.xml:ssä on oltava riippuvuuksina sekä JPA
+(javax.persistence-api) että eclipselink 
+
+Huomaa että projektin nimen lopussa oleva Mvn viittaa Maven-projektiin.
+
+Jotta projekti toimisi, pitää luoda seuraavanlainen taulu kantaan jeedb1:
+
+   CREATE TABLE `book` (
+  `book_id` int(11) NOT NULL auto_increment,
+  `title` varchar(50) NOT NULL,
+  `author` varchar(50) NOT NULL,
+   PRIMARY KEY  (`book_id`)
+   ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=0;
+
+Laita projekti eclipse-workspace -kansioon, avaa se Eclipsen Navigatorissa,
+oikeaklikkaa projektia ja päivitä projekti valitsemalla Maven->Update Project->Ok.
+
+Kyseessä on tavallinen Java-projekti joka ajetaan konsolissa. Maven-projekteissa
+Java-lähdekoodi sijaitsee src/main/java -kansiossa. Paketissa jpaluokat oleva
+JPAsimpleKoe.java sisältää main-metodin josta projekti voidaan suorittaa 
+oikeaklikkaamalla tiedostoa->Run As->Java Application.
+Suoritus voidaan tehdä myös oikeaklikkaamalla projektia->Run As->Java Application
+ja jos avautuu valintalista, valitaan JPAsimplekoe-jpaluokat 
+
+Tarkemmat selvitykset projektin toiminnasta on kommentoitu tiedostoihin.
+
+ 

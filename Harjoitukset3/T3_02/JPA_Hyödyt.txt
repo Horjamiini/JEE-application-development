@@ -1,0 +1,9 @@
+- JPA tarjoaa objektisuhteen, jonka avulla voidaa abtraktoida tietokannan käsittelyä => tietokanna taulut amllinettaan Java-luikkina ja SQL-kyselyiden sijaan voidaan käyttää JPA:n queryjä.
+Tämä vähentää manuaalisen SQl-koodin kirjoittamisen määrää, eikä sido varsinaisesti sovellusta tiettyyn tietokantaan. Esim. siirron voisi tehdä JPA:n kanssa MySQL -> PostgresSql ilman, että
+logiikkaa tarvisi mahdottomasti vaihtaa
+
+- Ilman JPA:ta tarvitsee myös kirjoittaa koodiin manuaalisesti tietokannan yhteyden avaaminen ja sulkeminen.
+
+- JPA:n tarjoamat queryt ovat helpommin käsiteltävissä ja ehkä myös loogisempia kuin tavallisiin SQL-kyselyihin.
+
+JPA:n luoma absraktointi tietokanna käsitellylle, muutta käsittelemistä helpommaksi erityisesti suuremmissa projekteissa, jossa tarvitaan lukuisia tietokantaoperaatioita.

@@ -1,0 +1,36 @@
+JPAJSFMvn on Maven-projekti jossa demotaan JPA JSF -sovelluksen arkkitehtuuria.
+
+Huomaa että projektin nimen lopussa oleva Mvn viittaa Maven-projektiin.
+
+Jotta projekti toimisi, pitää luoda seuraavanlainen taulu kantaan jeedb1
+Kyseessä on sama taulu kuin JPAsimpleMvn -esimerkissä:
+
+   CREATE TABLE `book` (
+  `book_id` int(11) NOT NULL auto_increment,
+  `title` varchar(50) NOT NULL,
+  `author` varchar(50) NOT NULL,
+   PRIMARY KEY  (`book_id`)
+   ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=0;
+   
+Projektissa käytetään datasourcea joka on nimeltään jdbc/jeedb1
+Payara -serverin admin -tilassa pitää luoda ensin connection pool jonne
+tulee yhteyden konfiguraatio ja connection poolille pitää luoda datasource
+eli JNDI-nimi (jdbc/jeedb1). 
+
+Laita projekti eclipse-workspace -kansioon, avaa se Eclipsen Navigatorissa,
+oikeaklikkaa projektia ja valitse Maven->Update Project->Ok.
+
+Jos projektin deployaus, eli julkaisu Payara-palvelimelle, ei onnistu (ja avautuu pikku
+ikkuna jossa ilmoitetaan että että ei voi deployata) ja mitään ilmoitusta tämän syystä
+ei tue konsoliin tai serverin lokiin, niin kyseessä voi olla bugi, jonka saa korjattua 
+valitsemalla Servers->Payara Server 5->Monitoring->Properties->Payara ja valitse
+Use jar Archives for deployment.
+
+Jos sovelluksen deployaus onnistuu, mutta Eclipse ei suostu ajamaan sovellusta selaimessa ja valittaa NullPointerExceptionia, voit kokeilla ajaa sovelluksen Payran admin-tilasta (Deployed projects-Projektin nimi->Launch). Tämä virhe voi johtua siitä että serveri ei löydä Eclipsen välityksellä selaimessa ajattavaa tiedostoa.
+
+Kyseessä on Web-projekti joka ajetaan Payara-palvelimella. Sovelluksessa on
+yksinkertainen kolmitasoinen arkkitehtuuri: Service(BookService.java), 
+Kontrolleri(BookController.java) ja View(index.xhtml).
+
+Tarkemmat selvitykset projektin toiminnasta on kommentoitu tiedostoihin.
+ 
