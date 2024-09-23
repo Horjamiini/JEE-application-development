@@ -7,3 +7,5 @@ logiikkaa tarvisi mahdottomasti vaihtaa
 - JPA:n tarjoamat queryt ovat helpommin käsiteltävissä ja ehkä myös loogisempia kuin tavallisiin SQL-kyselyihin.
 
 JPA:n luoma absraktointi tietokanna käsitellylle, muutta käsittelemistä helpommaksi erityisesti suuremmissa projekteissa, jossa tarvitaan lukuisia tietokantaoperaatioita.
+
+-----
