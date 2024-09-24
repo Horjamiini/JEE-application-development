@@ -36,7 +36,8 @@ import javax.validation.constraints.Size;
 @NamedQueries({ @NamedQuery(name = "Asiakas.findAll", query = "SELECT b FROM Asiakas b"),
 		@NamedQuery(name = "Asiakas.findById", query = "SELECT b FROM Asiakas b WHERE b.id = :id"),
 		@NamedQuery(name = "Asiakas.findByName", query = "SELECT b FROM Asiakas b WHERE b.nimi = :nimi"),
-		@NamedQuery(name = "Asiakas.findByEmail", query = "SELECT b FROM Asiakas b WHERE b.email = :email")})
+		@NamedQuery(name = "Asiakas.findByEmail", query = "SELECT b FROM Asiakas b WHERE b.email = :email"),
+		@NamedQuery(name = "Asiakas.deleteById", query = "DELETE FROM Asiakas b WHERE b.id = :id")})
 public class Asiakas implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id

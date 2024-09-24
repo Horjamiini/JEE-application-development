@@ -1,0 +1,89 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>index.xhtml</title>
+</h:head>
+
+<h:body>
+<h3>JPA JSF -Arkkitehtuuriesimerkki</h3>
+
+<p><b>Asiakkaiden listaus</b></p>
+      
+      <!--Asiakkaiden listaukseen käytetään JSF:n dataTable -elementtiä
+      Listaus tehdään AsiakasControllerin välityksellä, mutta varsinainen
+      tietokantahaku tehdään BookService -beanissa.-->  
+       
+       <!-- value="#{asiakasController.listAllAsiakkaat()}" herjaa Method must have signature varoitusta, mutta vaikuttaisi toimivan kuten pitääkin --> 
+      <h:dataTable var="asiakas" value="#{asiakasController.listAllAsiakkaat()}" border="1">
+
+            <h:column>
+                <f:facet name="header">ID</f:facet>
+                <h:outputText value="#{asiakas.id}"/>
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">Nimi</f:facet>
+                <h:outputText value="#{asiakas.nimi}"/>
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Osoite</f:facet>
+                <h:outputText value="#{asiakas.osoite}"/>
+            </h:column>
+            
+			<h:column>
+                <f:facet name="header">Puhelin</f:facet>
+                <h:outputText value="#{asiakas.puhelin}"/>
+            </h:column>
+            
+                        <h:column>
+                <f:facet name="header">Email</f:facet>
+                <h:outputText value="#{asiakas.email}"/>
+            </h:column>
+            
+
+        </h:dataTable>  
+        
+      
+    <!-- Asiakkaan lisäyslomakkeella annetaan asiakas-oliolle ominaisuudet nimi, osoite, puhelin, email
+    ja salasana. Ominaisuudet lähetetään ASiakasController- beanille, jossa tapahtuu asiakas-olion luonti
+    Asiakas.java -luokasta. Asiakas-olio tallennetaan kantaan AsiakasControllerin saveAsiakas() -metodin
+    välityksellä, mutta varsinainen tallennus tapahtuu AsiakasService-beanin avulla.-->
+     
+     <p><b>Lisää uusi asiakas</b></p>
+    	<h:form>
+              <table>
+    		<tr>
+    			<td>Nimi:</td>
+    			<td><h:inputText size="20" value="#{asiakasController.asiakas.nimi}" /></td>
+    		</tr>
+    		<tr>
+    			<td>Osoite:</td>
+    			<td><h:inputText size="20" value="#{asiakasController.asiakas.osoite}" /></td>
+    		</tr>
+    		<tr>
+    			<td>Puhelin:</td>
+    			<td><h:inputText size="20" value="#{asiakasController.asiakas.puhelin}" /></td>
+    		</tr>
+    		<tr>
+    			<td>Email:</td>
+    			<td><h:inputText size="20" value="#{asiakasController.asiakas.email}" /></td>
+    		</tr>
+    		<tr>
+    			<td>Salasana:</td>
+    			<td><h:inputText size="20" value="#{asiakasController.asiakas.salasana}" /></td>
+    		</tr>
+    		
+    		
+    		</table>
+ 
+     <h:commandButton value="Tallenna" action="#{asiakasController.saveAsiakas}" />
+     
+    	</h:form>
+    </h:body>
+
+
+
+</html>
