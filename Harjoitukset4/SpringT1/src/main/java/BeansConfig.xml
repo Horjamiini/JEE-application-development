@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       
+      xmlns:aop="http://www.springframework.org/schema/aop"
+
+      xsi:schemaLocation="http://www.springframework.org/schema/beans 
+      http://www.springframework.org/schema/beans/spring-beans.xsd
+      http://www.springframework.org/schema/aop 
+      http://www.springframework.org/schema/aop/spring-aop-4.0.xsd ">
+
+
+	<bean id="Asiakas" class="beanit.Asiakas">
+		<constructor-arg ref="Tili"/>
+	</bean>
+	
+	
+	
+	<!-- Tilin 1 config -->
+	<bean id="Tili" class="beanit.Tili1">
+		<property name="balance" value="1000"/>
+	</bean>
+	
+	<!-- Kommentoimalla ylempi tili ja poistamalla kommentointi alemmasta
+	tilistä voidaan vaihtaa kumpi tili on käytössä -->
+	
+	<!--<bean id="tili" class="beanit.Tili2">
+		<property name="balance" value="300"/>
+	</bean> -->
+	
+	
+	<bean id="lokipalvelu" class="beanit.LokiPalvelu">
+		<constructor-arg ref="Tili"/>
+	</bean>
+	
+	<aop:config>
+		<aop:aspect ref="lokipalvelu">
+		
+		<!-- PointCutit sekä lisäys että otto metodeille -->
+		<aop:pointcut id="addpoint"
+						expression="execution(* *.addBalance(..))"/>
+		<aop:pointcut id="takepoint"
+						expression="execution(* *.decreaseBalance(..))"/>
+		
+		<!-- Suoritetaan loggauksen pointcuttien jälkeen -->				
+		<aop:after pointcut-ref="addpoint"
+					method="logAdd"/>
+					
+		<aop:after pointcut-ref="takepoint"
+					method="logTake"/>
+		</aop:aspect>
+	</aop:config>
+</beans>
