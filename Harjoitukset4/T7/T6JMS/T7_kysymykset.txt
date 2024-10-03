@@ -1,0 +1,18 @@
+
+Mitä sovelluksessa tapahtuu ja mitkä ovat tiedostojen roolit.
+
+JMS:llä toteutettu sovellus, jonka avulle sovellukset voivat asynkronisesti lähettää ja vastaanottaa viestejä.
+
+pom.xml - konfiguraatio tiedosto
+Sender.java: luokka viestien lähettämistä varten, käyttää importattua JmsTemplate luokkaa viestin muuttamiseksi Java-olioista Jms viesteiksi.
+SenderConfig.java: Confuguraatio-luokka, luodaan vittaus ConnectionnFactorylla JMS-provideriin sekä luo oliot Sender ja JmsTemplatesta.
+Receiver.java: luokka, joka vastaanottaa ja käsittele Jms-viestit
+ReceiverConfig.java: Configuraatio-luokka, luodaan vittaus ConnectionnFactorylla JMS-provideriin sekä luo olin Receiveristä, luo myös metodin JmsListenerille, jota Receiver luokka odottaa/tarvitsee.
+SpringJmsApplicationTest.java: testiluokka
+
+
+Selvitä mitkä ovat JMS:n/ActiveMQ:n tyypillisimmät käyttökohteet sovelluskehityksessä?
+	Työn tasapuolisen jakamisen useiden prosessien tai palveluiden välillä - esim. Tehtävien käsittelyjonot, jossa useat palvelut käisttelevät saapuvia viestejä samasta 	jonosta.
+
+	Integraatioratkaisut, jossa useat järjsetelmät/sovellukset/mikroprosessti tarvitsevat yhteyden toisiinsa. esim. erp-ja crm-järjestelmien integrointi.
+	Sovellukset, joissa viestin välitys ja käsittely tapahtuu asynkronisesti

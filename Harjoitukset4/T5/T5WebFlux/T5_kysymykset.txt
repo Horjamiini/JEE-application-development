@@ -1,0 +1,24 @@
+Kuinka Spring WebFlux toimii ja mitkä ovat sovelluksen eri tiedostojen roolit?
+
+Spring WebFlux perustuu Reactor-kirjastoon ja se tarjoaa kaksi reaktiivista tyyppiä käytettäväksi: Mono(yksi tai tyhjä) & Flux(Useampi tai tyhjä). WebFluxin toiminta pohjautuu myös asyncroniseen toimintaa eli ohjelman/kommennon suoritus voi jatkua heti kun meneillä oleva toiminto on valmis ilman, että tarvitseee jäädä odottamaan muiden operaatioiden valmistumista.
+
+pom.xml - konfiguraatiotiedosto
+Book.java: model, malli tiedosto
+BookRepository.java - Springin toteuttama rajapinta, jolla tuodaan RectiveMongoRepositoryn methodit saataville.
+BookService.java - rajapinta, johon määritelty metodeja data hakemiseen, tallentamiseen ja poistamiseen.
+BookServiceImpl.java - Luokka, jossa toteutetaan BookSerivce rajapinnan metodit.
+BookController.java - Controller luokka, joka vastaanottaa ja käsittelee pyyntöjä modelin avulla.
+
+BookHandler.java - sisältää liiketoimitaloogiikkaa eri tietokantakutsuille.
+BookRouter.java - COnfiguraatio -luokka, johon määritelty RouterFunction, joka sisältää useita route-metodeja, joissa määriellään tilanteet, joissa mitäkin BookHandler-luokan metodeja kutsutaan.
+
+
+Millaisia uusia annotaatioita tutoriaalissa esintyy ja mikä on niiden merkitys?
+
+@Document - merkitsee kysiesen luokan Mongo documentiksi
+@RestController - yhdiselmä annotaatio, joka sisältää  @Controller(Ilmoittaa lu9okan toimivan ohjaimena/controllerina) sekä @ResponseBody(Auttaa palauttamaan datan suoraan HTTP-vastaukseen ilman näkymä(view) kerrosta, palautus esim. JSON-muodossa) annotaatiot.
+@Service - merkistee luokan beaniksi, joka on hallinnassa Spring kontekstissa. Annotaatiota käytetään merkistemään luokkaa, joka sisältää liiketoimintalogiikkaa.
+
+Miten Spring WebFluxilla toteutettu REST-API eroaa edellisessä tehtävässä toteutetusta REST-APIsta?
+
+BookHandler + BookRouter tyylillä toteutetu REST-API eroaa edellisen tehtävän REST-API toteutuksesta, koska siinä routet on konfiguroitu erikseen BookRouter-luokkaan ja routejen toiminta logiikka löytyy BookHandleristä. Aikaisemmassa toteutuksessa reitit sekä tietokantahaku löytyivät samasta Controller tiedostosta. Myös Mono ja Flux tyyppien käyttö eroo aikaisemmasta tehtävästä.

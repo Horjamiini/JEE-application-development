@@ -1,0 +1,23 @@
+Mitä sovelluksessa tapahtuu?
+
+Sovelluksessa tapahtuu kaksi tietokantatoimintoa samanaikaisesti. Yhdeltä pankkitililtä lähtee rahaa ja toiselle lisätään samainen määrä.
+
+
+Mitkä ovat sovelluksen tiedostojen roolit? 
+pom.xml sisältää tiedot - projektin riippuvuuksista
+application.properties - sisältää konfiguraatiot mm. tietokantaan
+BankAccount.java - On entiteetti luoka, joka on vastaava tietokannan Bank_account taululle
+BankAccountInfo.java - On model luokka, joka vastaan yksittäisen tietokannan taulusta löytyvän tietueen tietoja. Tässä tapauksessa (id,fullname,balance)
+BankAccountDAO - On DAO/Data Access Object/Entity Manager luokka, joka vastaa tietokanta pyynnöistä ja niiden tietojen tuomisesta Java sovellukselle
+BankTransactionException.java - middleware luokka, jota käytetään poikkeuksen heittooon kutsuttaessa
+SendMoneyForm.java - Model luokka, rahan siirtoa varten
+MainController - Controller luokka, joka vastaa käyttäjän pyyntöjen vastaan ottamisesta ja sovelluksen data tuomisesta/renderöimisestä view osuudelle.
+
+View: 	_menu.html
+	accountsPage.html
+	sendMoneyPage.html
+HTML-sivuja, joihin renderöidään dataa sovelluksesta.
+
+Miten @Transactional -annotaatio toimii?
+
+Tietokanta toiminnot, jotka taphatuvat annotoiuden metodi sisällä suoritetaan loppuun asti kyseisen metodin sisällä. Mikäli metodin sisällä heitetään poikkeus syystä tai toisesta palautetaan tietokanta alkuperäiseen tilaan ennen kuin yksikään muutos tapahtui. 
